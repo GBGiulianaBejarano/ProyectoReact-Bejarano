@@ -1,0 +1,36 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background-color: rgb(251, 231, 251);
+}
+
+.logo {
+    border-radius: 30px;  
+    display: flex;
+    justify-content: flex-start;
+    margin: 5px;
+    filter: drop-shadow(1px 1px 1px grey);
+}
+
+.colorbg{
+    background-color: transparent !important;
+    font-size: 1.3rem;
+}
+
+.intro h1{
+    font-size: 1.2rem !important;
+    padding: 50px;
+}
+
+.intro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
