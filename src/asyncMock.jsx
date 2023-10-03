@@ -1,6 +1,6 @@
 const products = [
     {
-        id: 1,
+        id: '1',
         nombre:'Silla Gamer Corsair',
         precio: 90000,
         category: 'Sillas Gamers',
@@ -62,3 +62,12 @@ export const getProductById = (productsId) => {
         }, 400)
     })
 }
+
+export const getProductsByCategory = (category) => {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const filteredProducts = products.filter((prod) => prod.category === category);
+        resolve(filteredProducts);
+      },500);
+  });
+};

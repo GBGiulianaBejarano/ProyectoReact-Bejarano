@@ -4,6 +4,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './NavBar.css'
 import CartWidget from '../CartWidget/CartWidget';
+import {NavLink} from 'react-router-dom';
 
 function NavBar() {
   return (
@@ -14,7 +15,9 @@ function NavBar() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#inicio">Inicio</Nav.Link>
+            <NavLink to="../../pages/Inicio" className="nav-link">
+              Inicio
+            </NavLink>
             <NavDropdown title="Categorias" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Periféricos</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Sillas Gamers</NavDropdown.Item>
@@ -24,9 +27,15 @@ function NavBar() {
                 Accesorios 🐻
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#ofertas">Ofertas</Nav.Link>
-            <Nav.Link href="#ayuda">Preguntas frecuentes</Nav.Link>
-            <Nav.Link href="#contacto">Contacto</Nav.Link>
+            <NavLink to="../pages/Ofertas" className="nav-link">
+              Ofertas
+            </NavLink>
+            <NavLink to="../../pages/Ayuda" className="nav-link">
+              Preguntas Frecuentes
+            </NavLink>
+            <NavLink to="../../pages/Contacto" className="nav-link">
+              Contacto
+            </NavLink>
           </Nav>
         </Navbar.Collapse>
       </Container>
