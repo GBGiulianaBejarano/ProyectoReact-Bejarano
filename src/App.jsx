@@ -4,30 +4,34 @@ import NavBar from './components/NavBar/NavBar';
 import ItemListContainer from './components/ItemListContainer/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
 // import UncontrolledExample from './components/Carousel/Carousel';
-import ItemCount from './components/ItemCount/ItemCount';
+import Inicio from './pages/Inicio';
+import Ofertas from './pages/Ofertas';
+import Productos from './pages/Productos';
+import Contacto from './pages/Contacto';
+import Ayuda from './pages/Ayuda';
 
 
 function App() {
   return (
     <div className='App'>
       <BrowserRouter>
-        <NavBar />
+        <NavBar/>
         <Routes>
-          {/* <Route path='/' element={<ItemListContainer/>} />
-        <Route path='/category/:categoryId' element={<ItemListContainer/>} />
-        <Route path='/Item/:ItemId' element={<ItemDetailContainer/>} /> */}
-          <Route path="../pages/Inicio" component={Inicio} />
-          <Route path="/Ofertas" component={Ofertas} />
-          <Route path="/Productos" component={Productos} />
-          <Route path="/Ayuda" component={Ayuda} />
-          <Route path="/Contacto" component={Contacto} />
-          <Route path='*' element={<h1> 404 NOT FOUND </h1>} />
-          {/* <ItemCount initial={1} stock={5} onAdd={(quantity) => console.log('cantidad agregada',quantity)}/> */}
-          {/* <UncontrolledExample/> */}
+          <Route path='/' element={<ItemListContainer />} />
+          <Route path='/category/:categoryId' element={<ItemListContainer />} />
+          <Route path='/item/:itemId' element={<ItemDetailContainer />} />
+          <Route path='/' element={<NavBar/>}/>
+          <Route index element={<Inicio/>}/>
+          <Route path='Ofertas' element={<Ofertas/>}/>
+          <Route path='Productos' element={<Productos/>}/>
+          <Route path='Contacto' element={<Contacto/>}/>
+          <Route path='Ayuda' element={<Ayuda/>}/>
+          <Route path='*' element={<h1>404 NOT FOUND</h1>} />
+          {/* <UncontrolledExample /> */}
         </Routes>
       </BrowserRouter>
     </div>
   );
 }
 
-export default App;
+export default App

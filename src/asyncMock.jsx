@@ -23,7 +23,7 @@ const products = [
         precio:240000 ,
         category: 'Sillas Gamers',
         img: 'https://imagenes.compragamer.com/productos/compragamer_Imganen_general_36926_Silla_Gamer_Vertagear_SL3800_HygennX_Negro_y_Blanco_Ergonomic_29fcc807-med.jpg',
-        stock: 1,
+        stock: 17,
         descripcion: 'Silla Gamer Vertagear SL3800 HygennX Negro y Blanco Ergonomic '
     },
     {
@@ -32,7 +32,7 @@ const products = [
         precio: 75000 ,
         category: 'Auriculares',
         img: 'https://imagenes.compragamer.com/productos/compragamer_Imganen_general_24416_Auriculares_Inalambricos_Logitech_G733_Lightspeed_RGB_Lila__1dffcd73-grn.jpg',
-        stock:1,
+        stock:130,
         descripcion: 'Auriculares Inalambricos Logitech G733 Lightspeed RGB Lila'
     },
     {
@@ -41,7 +41,7 @@ const products = [
         precio: 45000 ,
         category: 'Auriculares',
         img: 'https://imagenes.compragamer.com/productos/compragamer_Imganen_general_37623_Auriculares_Redragon_Zeus_X_Pink_H510P-RGB_7.1_Surround_a78260b5-grn.jpg',
-        stock:1,
+        stock:75,
         descripcion: 'Auriculares Redragon Zeus X Pink H510P-RGB 7.1 Surround'
     },
     

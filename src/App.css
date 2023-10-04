@@ -4,3 +4,31 @@
     box-sizing: border-box;
 }
 
+.Productos ul{
+    display: flex;
+    flex-direction: row;
+    margin: 2rem 0;
+}
+.Productos ul li{
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    list-style: none;
+    background-color: white;
+    margin: 1rem;
+    border-radius: 15px;
+    max-width: 400px;
+}
+.Productos ul li img{
+    max-width: 150px;
+}
+
+select{
+    padding: .3rem 1rem;
+    margin: 1rem 1rem;
+    border-radius: 15px;
+    color: black;
+    background-color: white;
+    font-weight: bolder;
+    font-size: 1.3rem;
+}
