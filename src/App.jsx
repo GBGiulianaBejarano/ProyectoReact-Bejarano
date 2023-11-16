@@ -10,11 +10,15 @@ import Productos from './pages/Productos';
 import Contacto from './pages/Contacto';
 import Ayuda from './pages/Ayuda';
 
+import {CartProvider} from './components/Context/CartContext';
+import Cart from './components/Cart/Cart'
+
 
 function App() {
   return (
     <div className='App'>
       <BrowserRouter>
+      <CartProvider>
         <NavBar/>
         <Routes>
           <Route path='/' element={<ItemListContainer />} />
@@ -26,9 +30,11 @@ function App() {
           <Route path='Productos' element={<Productos/>}/>
           <Route path='Contacto' element={<Contacto/>}/>
           <Route path='Ayuda' element={<Ayuda/>}/>
+          <Route path='/cart' element={<Cart/>} />
           <Route path='*' element={<h1>404 NOT FOUND</h1>} />
           {/* <UncontrolledExample /> */}
         </Routes>
+        </CartProvider>
       </BrowserRouter>
     </div>
   );
