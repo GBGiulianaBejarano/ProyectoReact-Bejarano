@@ -1,8 +1,8 @@
-import '../App.css'
-import React, { useEffect, useState } from 'react';
-import { getProductsByCategory } from '../asyncMock';
-import ItemCount from '../components/ItemCount/ItemCount'; 
-import ItemDetail from '../components/ItemDetail/ItemDetail';
+import React, { useEffect, useState, useContext } from 'react';
+import ItemCount from '../components/ItemCount/ItemCount';
+import { CartContext } from '../components/Context/CartContext';
+import { getDocs, collection, query, where } from 'firebase/firestore';
+import db from '../components/services/firebase/firebaseConfig';
 
 const categorias = [
   'Sillas Gamers',
@@ -11,22 +11,32 @@ const categorias = [
 ];
 
 const Productos = () => {
-  const [selectedCategory, setSelectedCategory] = useState(categorias[0]);
+  const [selectedCategory, setSelectedCategory] = useState('');
   const [productos, setProductos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { addItem } = useContext(CartContext);
 
   useEffect(() => {
     setLoading(true);
-    getProductsByCategory(selectedCategory)
-      .then((result) => {
-        setProductos(result);
+
+    // Query para obtener todos los productos desde Firebase
+    const collectionRef = collection(db, 'items');
+
+    getDocs(collectionRef)
+      .then((querySnapshot) => {
+        const productsData = [];
+        querySnapshot.forEach((doc) => {
+          const data = doc.data();
+          productsData.push({ id: doc.id, ...data });
+        });
+        setProductos(productsData);
         setLoading(false);
       })
       .catch((error) => {
-        console.error('Error al obtener productos', error);
+        console.error('Error al obtener productos:', error);
         setLoading(false);
       });
-  }, [selectedCategory]);
+  }, []);
 
   return (
     <div className='Productos'>
@@ -51,17 +61,16 @@ const Productos = () => {
         <ul>
           {productos.map((producto) => (
             <li key={producto.id}>
-              <img src={producto.img} alt={producto.nombre} />
-              <h2>{producto.nombre}</h2>
+              <img src={producto.img} alt={producto.titulo} />
+              <h2>{producto.titulo}</h2>
               <p>Precio: ${producto.precio}</p>
-              <p>Descripción: {producto.descripcion}</p>
+              <p>Descripción: {producto.categoria}</p>
               <ItemCount
                 stock={producto.stock}
-                initial={1} // valor inicial 
+                initial={1}
                 onAdd={(quantity) => {
-                  // se ejecutará cuando se agregue al carrito
+                  addItem(producto, quantity);
                   console.log(`Se agregarán ${quantity} unidades de ${producto.nombre} al carrito.`);
-                  // Puedes implementar la lógica para agregar al carrito aquí
                 }}
               />
             </li>
@@ -70,6 +79,5 @@ const Productos = () => {
       )}
     </div>
   );
-};
-
+}
 export default Productos;
